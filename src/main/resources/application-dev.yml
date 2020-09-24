@@ -16,7 +16,7 @@ spring:
     driver_class_name: oracle.jdbc.driver.OracleDriver
     url: jdbc:oracle:thin:@172.16.10.99:1521:orcl
     username: zlhis
-    password: HISI39
+    password: --
   # spring data jpa配置
   #  jpa:
   #    hibernate:
