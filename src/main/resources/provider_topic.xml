@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+     http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+     http://www.springframework.org/schema/context
+     http://www.springframework.org/schema/context/spring-context-3.0.xsd
+    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <context:annotation-config/>
+    <context:component-scan base-package="com.study.activemq"/>
+
+    <bean id="targetConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+        <property name="brokerURL" value="tcp://localhost:61616"></property>
+        <!--<property name="trustedPackages">-->
+        <!--<list>-->
+        <!--<value>com.study</value>-->
+        <!--<value>com.common</value>-->
+        <!--</list>-->
+        <!--</property>-->
+    </bean>
+
+    <bean id="connectionPool"
+          class="org.springframework.jms.connection.SingleConnectionFactory">
+        <property name="targetConnectionFactory" ref="targetConnectionFactory"></property>
+    </bean>
+
+    <!-- Spring JMS Template -->
+    <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+        <property name="connectionFactory" ref="targetConnectionFactory"/>
+    </bean>
+
+    <bean id="testPublisher" class="com.study.activemq.topic.provider.TestPublisher">
+        <property name="template" ref="jmsTemplate"/>
+        <property name="testDest" ref="testDestination"/>
+    </bean>
+
+    <bean id="testDestination" class="org.apache.activemq.command.ActiveMQTopic">
+        <constructor-arg value="TestTopic"/>
+    </bean>
+
+</beans>
