@@ -1,6 +1,6 @@
 package com.study.poi;
 
-import com.common.model.Items;
+import com.common.model.ItemsInExcel;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -14,8 +14,8 @@ public class ExcelRWTest {
     @Test
     public void readExcel() throws Exception {
         String path = "src/20200924.xlsx";
-        List<Items> infoList = ExcelTools.readExcel(path);
-        for (Items item : infoList) {
+        List<ItemsInExcel> infoList = ExcelTools.readExcel(path);
+        for (ItemsInExcel item : infoList) {
             System.out.println(item.toString());
         }
     }

@@ -1,6 +1,6 @@
 package com.study.poi;
 
-import com.common.model.Items;
+import com.common.model.ItemsInExcel;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -17,8 +17,8 @@ import java.util.List;
 
 public class ExcelTools {
 
-    public static List<Items> readExcel(String path) {
-        List<Items> infoList = new ArrayList<Items>();
+    public static List<ItemsInExcel> readExcel(String path) {
+        List<ItemsInExcel> infoList = new ArrayList<ItemsInExcel>();
         int line = 0;
         try {
             FileInputStream fis = new FileInputStream(path);
@@ -47,6 +47,8 @@ public class ExcelTools {
                     String code = "";
                     String name = "";
                     String price = "";
+                    String detail = "";
+                    String doc = "";
                     // 3.3 获取一个row
                     Row row = rowIterator.next();
                     // 3.4 遍历row的每一个单元格
@@ -69,7 +71,17 @@ public class ExcelTools {
                             }
                             case 2: {
                                 System.out.println(cell.toString());
+                                detail = cell.getStringCellValue().trim();
+                                break;
+                            }
+                            case 3: {
+                                System.out.println(cell.toString());
                                 price = cell.getStringCellValue().trim();
+                                break;
+                            }
+                            case 4: {
+                                System.out.println(cell.toString());
+                                doc = cell.getStringCellValue().trim();
                                 break;
                             }
                             default:
@@ -78,11 +90,13 @@ public class ExcelTools {
                         }
                     }
                     // 3.7 每一行生成一个对象
-                    Items items = new Items();
-                    items.setCode(code);
-                    items.setName(name);
-                    items.setPrice(price);
-                    infoList.add(items);
+                    ItemsInExcel itemsInExcel = new ItemsInExcel();
+                    itemsInExcel.setCode(code);
+                    itemsInExcel.setName(name);
+                    itemsInExcel.setPrice(price);
+                    itemsInExcel.setDetail(detail);
+                    itemsInExcel.setDoc(doc);
+                    infoList.add(itemsInExcel);
                 }
             }
             return infoList;

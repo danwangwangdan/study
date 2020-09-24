@@ -14,4 +14,5 @@ public interface MainService {
     List<ItemsInHis> getItemsInHis();
 
 
+    int updatePrice(String code,String price);
 }

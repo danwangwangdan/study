@@ -22,4 +22,9 @@ public class MainServiceImpl implements MainService {
         List<ItemsInHis> itemsInHis = queueUtil.getItemsInHis();
         return itemsInHis;
     }
+
+    @Override
+    public int updatePrice(String code, String price) {
+       return queueUtil.updatePrice(code, price);
+    }
 }
