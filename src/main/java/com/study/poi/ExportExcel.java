@@ -1,4 +1,11 @@
 package com.study.poi;
+
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.util.CellRangeAddress;
+
 import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.lang.reflect.Method;
@@ -6,13 +13,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
-
-import org.apache.poi.hssf.usermodel.HSSFCell;
-import org.apache.poi.hssf.usermodel.HSSFRow;
-import org.apache.poi.hssf.usermodel.HSSFSheet;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.util.CellRangeAddress;
 
 public final class ExportExcel {
     /***
@@ -53,15 +53,11 @@ public final class ExportExcel {
 
 
     /**
-     *
-     * @param dataList
-     *        对象集合
-     * @param titleMap
-     *        表头信息（对象属性名称->要显示的标题值)[按顺序添加]
-     * @param sheetName
-     *        sheet名称和表头值
+     * @param dataList  对象集合
+     * @param titleMap  表头信息（对象属性名称->要显示的标题值)[按顺序添加]
+     * @param sheetName sheet名称和表头值
      */
-    public static void excelExport(List<?> dataList, Map<String, String> titleMap, String sheetName) {
+    public static void exportExcel(List<?> dataList, Map<String, String> titleMap, String sheetName) {
         // 初始化workbook
         initHSSFWorkbook(sheetName);
         // 标题行
@@ -78,10 +74,9 @@ public final class ExportExcel {
         try {
             //生成UUID文件名称
             //UUID是指在一台机器上生成的数字，它保证对在同一时空中的所有机器都是唯一的。
-            UUID uuid = UUID.randomUUID();
-            String filedisplay = uuid+".xls";
+            String filedisplay = "202010error.xls";
             //如果web项目，1、设置下载框的弹出（设置response相关参数)；2、通过httpservletresponse.getOutputStream()获取
-            OutputStream out = new FileOutputStream("D:\\" + filedisplay);
+            OutputStream out = new FileOutputStream("E:\\" + filedisplay);
             workbook.write(out);
             out.close();
         }

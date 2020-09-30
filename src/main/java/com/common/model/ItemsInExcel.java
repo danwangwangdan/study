@@ -14,7 +14,11 @@ public class ItemsInExcel extends BaseModel {
     private String detail;
     private String doc;
     private String price;
-    private int isUpdate = 0;
+    private Integer isUpdatePrice = 0;
+    /**
+     * 0为需要更新，1为不需要更新
+     */
+    private Integer isNotNeedUpdate = 0;
 
     public ItemsInExcel() {
     }
@@ -43,13 +47,6 @@ public class ItemsInExcel extends BaseModel {
         this.price = price;
     }
 
-    public int getIsUpdate() {
-        return isUpdate;
-    }
-
-    public void setIsUpdate(int isUpdate) {
-        this.isUpdate = isUpdate;
-    }
 
     public String getDetail() {
         return detail;
@@ -65,5 +62,21 @@ public class ItemsInExcel extends BaseModel {
 
     public void setDoc(String doc) {
         this.doc = doc;
+    }
+
+    public Integer getIsUpdatePrice() {
+        return isUpdatePrice;
+    }
+
+    public void setIsUpdatePrice(Integer isUpdatePrice) {
+        this.isUpdatePrice = isUpdatePrice;
+    }
+
+    public Integer getIsNotNeedUpdate() {
+        return isNotNeedUpdate;
+    }
+
+    public void setIsNotNeedUpdate(Integer isNotNeedUpdate) {
+        this.isNotNeedUpdate = isNotNeedUpdate;
     }
 }

@@ -60,32 +60,32 @@ public class ExcelTools {
                         cell.setCellType(Cell.CELL_TYPE_STRING);
                         switch (cell.getColumnIndex()) {
                             case 0: {
-                                System.out.println(cell.toString());
+                                //System.out.println(cell.toString());
                                 code = cell.getStringCellValue().trim();
                                 break;
                             }
                             case 1: {
-                                System.out.println(cell.toString());
+                                //System.out.println(cell.toString());
                                 name = cell.getStringCellValue().trim();
                                 break;
                             }
                             case 2: {
-                                System.out.println(cell.toString());
+                                //System.out.println(cell.toString());
                                 detail = cell.getStringCellValue().trim();
                                 break;
                             }
                             case 3: {
-                                System.out.println(cell.toString());
+                                //System.out.println(cell.toString());
                                 price = cell.getStringCellValue().trim();
                                 break;
                             }
                             case 4: {
-                                System.out.println(cell.toString());
+                                //System.out.println(cell.toString());
                                 doc = cell.getStringCellValue().trim();
                                 break;
                             }
                             default:
-                                System.out.println(cell.getStringCellValue().trim());
+                                //System.out.println(cell.getStringCellValue().trim());
                                 break;
                         }
                     }
